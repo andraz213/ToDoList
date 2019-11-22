@@ -1,3 +1,7 @@
+const axios = require('axios');
+const https = require('https');
+
+/*
 var task_lists = (req, res) => {
   res.render('task_lists', { title: 'Task Lists',
 task_lists:[{
@@ -9,11 +13,46 @@ task_lists:[{
 }]
 });
 };
+*/
+
+
+var task_lists = (req, res) => {
+  var data;
+  axios.get('http://localhost:3000/api/lists')
+  .then(response => {
+    data = '{"title": \"Task Lists\", "task_lists":';
+
+    data += JSON.stringify(response.data);
+    data += "}";
+    //console.log(data);
+    data = JSON.parse(data);
+    console.log(data);
+    res.render('task_lists', data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+};
 
 /* Vrni podrobnosti lokacije */
 var tasks = (req, res) => {
-  res.render('tasks', { title: 'Tasks',
-  tasks:[{
+  var data;
+  axios.get('http://localhost:3000/api/lists')
+  .then(response => {
+    data = "{ title: 'Tasks', ";
+
+    data += JSON.stringify(response.data);
+    data += "}";
+    //console.log(data);
+    // data = JSON.parse(data);
+    console.log(data);
+  }).then(res.render('tasks', data))
+  .catch(error => {
+    console.log(error);
+  });
+
+
+  /*tasks:[{
     number: 1,
     description: 'Clean your room',
     date: '22.11.2019',
@@ -29,7 +68,7 @@ var tasks = (req, res) => {
     date: '20.11.2019',
     done: true
   }]
-  });
+});*/
 };
 
 /* Vrni stran za dodajanje komentarjev */
