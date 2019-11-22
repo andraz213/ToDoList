@@ -6,15 +6,16 @@
     "start": "node ./bin/www"
   },
   "engines": {
-  "node": ">=8.16.0",
-  "npm": ">=6.4.1"
-},
+    "node": ">=8.16.0",
+    "npm": ">=6.4.1"
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
+    "mongoose": "^5.7.12",
     "morgan": "~1.9.1",
     "popper.js": "^1.16.0"
   }
