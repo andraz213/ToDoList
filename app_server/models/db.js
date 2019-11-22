@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('./page');
 
-const dbURI = 'mongodb+srv://admin:enadvatri@todoodot-ooaot.mongodb.net/test?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://admin:enadvatri@todoodot-ooaot.mongodb.net/todoodot?retryWrites=true&w=majority';
 mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
