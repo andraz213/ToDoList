@@ -1,7 +1,7 @@
 const axios = require('axios');
 const https = require('https');
 
-var api_base = "https://to-do-od-ot.herokuapp.com/api/";
+var api_base = "https://todoodot.herokuapp.com/api/";
 
 var task_lists = (req, res) => {
   console.log("controller task_lists");

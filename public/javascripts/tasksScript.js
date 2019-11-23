@@ -1,4 +1,4 @@
-var api_base = "https://to-do-od-ot.herokuapp.com/api/";
+var api_base = "https://todoodot.herokuapp.com/api/";
 
 document.querySelectorAll('.taskDoneButton').forEach(item => {
   item.addEventListener('click', event => {
