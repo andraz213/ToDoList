@@ -5,9 +5,22 @@
   <div class ="col-sm-10 col-lg-8">
     <h2 class="my-4">{{{title}}}</h2>
     <div class="row">
-      <div class="col-lg-3 col-9">
-        <a href="/add" class="btn btn-outline-primary my-3">Add list</a>
+
+      <div class ="col-sm-10 col-lg-8">
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Add new list</label>
+            <textarea class="form-control" id="newListTitle" rows="1" required></textarea>
+          </div>
+
+        <button type="submit" class="btn btn-outline-primary mb-3" id="newListButton">Add List</button>
+        <div class="row" >
+          <div class="col-6" id="successSpace">
+            </div>
+        </div>
+      </form>
       </div>
+
 
     </div>
 
@@ -23,3 +36,7 @@
 
   </div>
 </div>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/javascripts/addListScript.js"></script>

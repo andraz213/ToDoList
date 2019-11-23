@@ -5,41 +5,63 @@
   <div class ="col-sm-10 col-lg-8">
     <h2 class="my-4">Task list: {{{list.title}}}</h2>
     <div class="row">
-      <div class="col-lg-1 col-9">
-        <a href="../tasks/add/{{{list._id}}}" class="btn btn-outline-primary my-3">Add task</a>
+      <div class ="col-sm-10 col-lg-8">
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">New Task</label>
+            <textarea class="form-control" id="newTaskTitle" rows="1" required></textarea>
+          </div>
+
+        <button type="submit" class="btn btn-outline-primary my-3" id="newTaskButton">Add task</button>
+
+        <div class="row" >
+          <div class="col-6" id="successSpace">
+            </div>
+        </div>
+      </form>
       </div>
-      <div class="col-lg-2 col-2">
-        <button type="button" class="btn btn-outline-danger my-3">Edit</button>
-      </div>
+
     </div>
     <table class="table">
   <thead>
     <tr>
       <th scope="col">Description</th>
-      <th scope="col">Date</th>
       <th scope="col">Done</th>
     </tr>
   </thead>
   <tbody>
     {{#each list.tasks as |task|}}
-    <tr>
-      <td>{{task.description}}</td>
-      <td>{{task.date}}</td>
+    <tr id="{{{task._id}}}">
+      <td>{{{task.description}}}</td>
       <td>
+        <div class="row">
+          <div class="col-6">
         {{#if task.done}}
         <span class="badge badge-success">YAY</span>
         {{else}}
-        <button type="button" class="btn btn-outline-success">DONE</button>
+        <button type="button" class="btn btn-outline-primary btn-sm taskDoneButton mx-1" task_id_data="{{{task._id}}}">DONE</button>
+
         {{/if}}
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-danger btn-sm deleteTaskButton" task_id_data="{{{task._id}}}">X</button>
+          </div>
+      </div>
       </td>
     </tr>
     {{/each}}
-    var now = new Date();
-    var date = "";
-    date += now.getDate() +"."+(now.getMonth() + 1) + "." + now.getFullYear();
   </tbody>
 </table>
 
-
   </div>
+
 </div>
+<div class="row mx-1 mb-3">
+ <div class="col-1">
+   </div>
+<button type="button" class="btn btn-danger btn-sm deleteListButton mx-3" list_id_data="{{{list._id}}}">Delete List</button>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/javascripts/tasksScript.js"></script>
+<script src="/javascripts/addTaskScript.js"></script>
