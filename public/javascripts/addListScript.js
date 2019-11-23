@@ -29,6 +29,6 @@ function addNewList(){
 
 
 function backToHomePage(){
-  window.location = "https://to-do-od-ot.herokuapp.com/";
+  window.location = "https://todoodot.herokuapp.com/";
 
 }
