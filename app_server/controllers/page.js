@@ -1,6 +1,8 @@
 const axios = require('axios');
 const https = require('https');
 
+var api_base = "http://localhost:3000/api/";
+
 /*
 var task_lists = (req, res) => {
   res.render('task_lists', { title: 'Task Lists',
@@ -18,13 +20,13 @@ task_lists:[{
 
 var task_lists = (req, res) => {
   var data;
-  axios.get('http://localhost:3000/api/lists')
+  var api_url = api_base + "lists";
+  axios.get(api_url)
   .then(response => {
     data = '{"title": \"Task Lists\", "task_lists":';
 
     data += JSON.stringify(response.data);
     data += "}";
-    //console.log(data);
     data = JSON.parse(data);
     console.log(data);
     res.render('task_lists', data);
@@ -34,13 +36,35 @@ var task_lists = (req, res) => {
   });
 };
 
+
+
+var tasks = (req, res) => {
+  var data;
+  var api_url = api_base + "lists/" + req.params.idList;
+  console.log(api_url)
+  axios.get(api_url)
+  .then(response => {
+    data = '{"title": \"Tasks\", "list":';
+
+    data += JSON.stringify(response.data);
+    data += "}";
+    console.log(data);
+    data = JSON.parse(data);
+    console.log(data);
+    res.render('tasks', data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+};
+
 /* Vrni podrobnosti lokacije */
+/*
 var tasks = (req, res) => {
   var data;
   axios.get('http://localhost:3000/api/lists')
   .then(response => {
     data = "{ title: 'Tasks', ";
-
     data += JSON.stringify(response.data);
     data += "}";
     //console.log(data);
@@ -49,7 +73,7 @@ var tasks = (req, res) => {
   }).then(res.render('tasks', data))
   .catch(error => {
     console.log(error);
-  });
+  });*/
 
 
   /*tasks:[{
@@ -68,16 +92,16 @@ var tasks = (req, res) => {
     date: '20.11.2019',
     done: true
   }]
-});*/
-};
+});
+};*/
 
 /* Vrni stran za dodajanje komentarjev */
 var add_list = (req, res) => {
-  res.render('index', { title: 'Add List' });
+  res.render('add_list', { title: 'Add List' });
 };
 
 var add_task = (req, res) => {
-  res.render('index', { title: 'Add Task' });
+  res.render('add_task', { title: 'Add Task' });
 };
 
 

@@ -10,10 +10,24 @@ const getAllLists = (req, res) => {
 };
 
 const addNewList = (req, res) => {
-  res.status(200).json({"status": "uspešno"});
+  console.log(req.body.title);
+
+    var newList = new Lists(req.body);
+    // save model to database
+    newList.save(function (err, list1) {
+      if (err){
+        res.status(500).json({"status": "error"});
+         return console.error(err);
+       }
+      res.status(200).json({"status": "uspešno"});
+      console.log(list1.title + " saved to Lists collection.");
+    });
+
+
 };
 
 const getListById = (req, res) => {
+
   Lists
     .findById(req.params.idList)
     .exec((napaka, list) => {
@@ -33,7 +47,26 @@ const getListById = (req, res) => {
 };
 
 const updateList = (req, res) => {
-  res.status(200).json({"status": "uspešno"});
+  console.log("ddddd");
+  console.log(req.params.idList);
+  Lists.findById(req.params.idList).exec((napaka, list) => {
+    console.log(list.tasks);
+    console.log(req.body);
+    list.tasks = req.body.tasks;
+    console.log(list.tasks);
+    list.save(function (err, list1) {
+      if (err){
+        res.status(500).json({"status": "error"});
+        console.log("slabo");
+         return console.error(err);
+       }
+      res.status(200).json({"status": "uspešno"});
+      console.log(list1.title + " saved.");
+    });
+
+  });
+
+
 };
 
 const deleteList = (req, res) => {

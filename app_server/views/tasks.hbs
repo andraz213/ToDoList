@@ -3,10 +3,10 @@
   <div class ="col-sm-1 col-lg-2">
   </div>
   <div class ="col-sm-10 col-lg-8">
-    <h2 class="my-4">Task list: everyday</h2>
+    <h2 class="my-4">Task list: {{{list.title}}}</h2>
     <div class="row">
       <div class="col-lg-1 col-9">
-        <button type="button" class="btn btn-outline-primary my-3">Add task</button>
+        <a href="../tasks/add/{{{list._id}}}" class="btn btn-outline-primary my-3">Add task</a>
       </div>
       <div class="col-lg-2 col-2">
         <button type="button" class="btn btn-outline-danger my-3">Edit</button>
@@ -15,16 +15,14 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Description</th>
       <th scope="col">Date</th>
       <th scope="col">Done</th>
     </tr>
   </thead>
   <tbody>
-    {{#each tasks as |task|}}
+    {{#each list.tasks as |task|}}
     <tr>
-      <th scope="row">{{task.number}}</th>
       <td>{{task.description}}</td>
       <td>{{task.date}}</td>
       <td>
@@ -36,7 +34,9 @@
       </td>
     </tr>
     {{/each}}
-
+    var now = new Date();
+    var date = "";
+    date += now.getDate() +"."+(now.getMonth() + 1) + "." + now.getFullYear();
   </tbody>
 </table>
 

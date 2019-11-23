@@ -4,8 +4,8 @@ var ctrlPage = require('../controllers/page');
 
 /* GET home page. */
 router.get('/', ctrlPage.task_lists);
-router.get('/task_lists/add', ctrlPage.add_list);
-router.get('/tasks', ctrlPage.tasks);
-router.get('/tasks/add', ctrlPage.add_task);
+router.get('/add', ctrlPage.add_list);
+router.get('/tasks/:idList', ctrlPage.tasks);
+router.get('/tasks/add/:idList', ctrlPage.add_task);
 
 module.exports = router;

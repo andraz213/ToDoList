@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 
 const taskShema = new mongoose.Schema({
-  consec: {type: Number, required: true},
-  description: {type: String, required: true},
+  number: {type: Number, required: true},
+  description: String,
   date: {type: String, required: true},
   done: {type: Boolean, required: true}
 });
