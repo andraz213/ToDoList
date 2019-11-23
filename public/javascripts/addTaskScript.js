@@ -1,4 +1,4 @@
-var api_base = "https://to-do-od-ot.herokuapp.com/";
+var api_base = "https://to-do-od-ot.herokuapp.com/api";
 
 document.getElementById("newTaskButton").addEventListener("click", addNewTask);
 

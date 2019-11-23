@@ -1,4 +1,4 @@
-var api_base = "https://to-do-od-ot.herokuapp.com/";
+var api_base = "https://to-do-od-ot.herokuapp.com/api";
 
 document.querySelectorAll('.deleteListButton').forEach(item => {
   item.addEventListener('click', event => {
