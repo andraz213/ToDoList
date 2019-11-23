@@ -3,22 +3,8 @@ const https = require('https');
 
 var api_base = "https://to-do-od-ot.herokuapp.com/api/";
 
-/*
 var task_lists = (req, res) => {
-  res.render('task_lists', { title: 'Task Lists',
-task_lists:[{
-  title: 'Everyday'
-},{
-  title: 'Business goals'
-}, {
-  title: 'Stealing the Moon checklist'
-}]
-});
-};
-*/
-
-
-var task_lists = (req, res) => {
+  console.log("controller task_lists");
   var data;
   var api_url = api_base + "lists";
   axios.get(api_url)
